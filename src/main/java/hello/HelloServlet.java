@@ -119,6 +119,7 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String msg = "";
+        String cumprimento = "";
         
         String lang = request.getParameter("lang");
         if(lang==null)
@@ -153,6 +154,14 @@ public class HelloServlet extends HttpServlet {
         
         LocalDateTime local = LocalDateTime.now();
         int hourOfDay = local.getHour();
+        
+        if (hourOfDay >= 12 && hourOfDay < 18) {
+        	cumprimento = "Boa tarde";
+        } else if (hourOfDay >= 18 && hourOfDay < 24) {
+        	cumprimento = "Boa noite";
+        } else {
+        	cumprimento = "Bom dia";
+        }
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -165,7 +174,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
-            out.println("<p>" + hourOfDay + "</p>");
+            out.println("<p>" + cumprimento + "</p>");
             out.println("</body>");
             out.println("</html>");
         }
