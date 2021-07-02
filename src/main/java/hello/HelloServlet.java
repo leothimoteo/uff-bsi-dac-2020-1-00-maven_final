@@ -123,6 +123,10 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         String msg = "";
         String cumprimento = "";
+        int ano;
+        int idade;
+        LocalDateTime local = LocalDateTime.now();
+        int hourOfDay = local.getHour();
         
         String lang = request.getParameter("lang");
         if(lang==null)
@@ -158,15 +162,16 @@ public class HelloServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-        System.out.println(date);
+		ano = date.getYear();
+		idade = local.getYear() - ano;
+        System.out.println(idade);
         
         if(nome==null)
             nome = "Fulano";
         
         msg = msg+nome+"!";
         
-        LocalDateTime local = LocalDateTime.now();
-        int hourOfDay = local.getHour();
+    
         
         if (hourOfDay >= 12 && hourOfDay < 18) {
         	cumprimento = "Boa tarde";
