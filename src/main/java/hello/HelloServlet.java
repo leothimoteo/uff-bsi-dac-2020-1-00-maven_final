@@ -7,6 +7,8 @@ package hello;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -148,6 +150,9 @@ public class HelloServlet extends HttpServlet {
             nome = "Fulano";
         
         msg = msg+nome+"!";
+        
+        LocalDateTime local = LocalDateTime.now();
+        int hourOfDay = local.getHour();
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -160,6 +165,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
+            out.println("<p>" + hourOfDay + "</p>");
             out.println("</body>");
             out.println("</html>");
         }
