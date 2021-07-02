@@ -162,7 +162,7 @@ public class HelloServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		ano = date.getYear();
+		ano = date.getYear() + 1900;
 		idade = local.getYear() - ano;
 		System.out.println(ano);
 		System.out.println(local.getYear());
