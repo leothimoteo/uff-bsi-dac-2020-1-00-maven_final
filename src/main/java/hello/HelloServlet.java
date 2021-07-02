@@ -7,7 +7,10 @@ package hello;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -146,7 +149,17 @@ public class HelloServlet extends HttpServlet {
         }
         
         String nome = request.getParameter("nome");
+        SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+        String parameter = request.getParameter("data");
+        Date date = null;
+		try {
+			date = in.parse(parameter);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
+        System.out.println(date);
+        
         if(nome==null)
             nome = "Fulano";
         
@@ -154,8 +167,6 @@ public class HelloServlet extends HttpServlet {
         
         LocalDateTime local = LocalDateTime.now();
         int hourOfDay = local.getHour();
-        
-        System.out.println(hourOfDay);
         
         if (hourOfDay >= 12 && hourOfDay < 18) {
         	cumprimento = "Boa tarde";
