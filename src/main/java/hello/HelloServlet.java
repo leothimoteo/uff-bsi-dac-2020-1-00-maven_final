@@ -164,6 +164,8 @@ public class HelloServlet extends HttpServlet {
 
 		ano = date.getYear();
 		idade = local.getYear() - ano;
+		System.out.println(ano);
+		System.out.println(local.getYear());
         System.out.println(idade);
         
         if(nome==null)
