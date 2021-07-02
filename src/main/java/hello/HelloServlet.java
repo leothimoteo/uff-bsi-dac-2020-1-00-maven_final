@@ -155,6 +155,8 @@ public class HelloServlet extends HttpServlet {
         LocalDateTime local = LocalDateTime.now();
         int hourOfDay = local.getHour();
         
+        System.out.println(hourOfDay);
+        
         if (hourOfDay >= 12 && hourOfDay < 18) {
         	cumprimento = "Boa tarde";
         } else if (hourOfDay >= 18 && hourOfDay < 24) {
