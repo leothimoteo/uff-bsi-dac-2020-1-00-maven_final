@@ -4,7 +4,7 @@
 
 ## Tarefa 01: Hello World no Heroku
 
-- [Link da Aplicação](https://still-journey-31467.herokuapp.com)
+[Link da Aplicação](https://still-journey-31467.herokuapp.com)
 
 ## TÉCNOLOGIAS UTILIZADAS
 
