@@ -4,6 +4,15 @@
 
 ## Tarefa 01: Hello World no Heroku
 
+## TÉCNOLOGIAS UTILIZADAS
+
+- JAVA 8
+- SERVLET
+- JSP
+- MAVEN 3.6.1
+- Apache Tomcat/9.0.27 in (HEROKU)
+- IDE ECLIPSE
+
 ### Descrição da Tarefa
 
 <p align="justify">
