@@ -195,10 +195,6 @@ public class HelloServlet extends HttpServlet {
 		int idade;
 		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
         String parameter = request.getParameter("data");
-        
-//        if(parameter==null) {
-//        	throw new Exception("Data não informada, você deve informar a data!!!");
-//        }
             
         Date date = null;
 		try {
