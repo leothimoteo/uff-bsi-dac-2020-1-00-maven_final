@@ -4,6 +4,8 @@
 
 ## Tarefa 01: Hello World no Heroku
 
+- [Link da Aplicação](https://still-journey-31467.herokuapp.com)
+
 ## TÉCNOLOGIAS UTILIZADAS
 
 - JAVA 8
@@ -31,7 +33,7 @@
 ### Funcionalidade Desenvolvida
 
 Acessando o seguinte endereço:
-- [Link Heroku](https://still-journey-31467.herokuapp.com/helloform.html)
+- [Link da Funcionalidade](https://still-journey-31467.herokuapp.com/helloform.html)
 
 <p align="justify">
  Teremos um campo novo que é o campo de Data a partir dele é possivel que o usuário possa inserir a data do seu aniversário. 
