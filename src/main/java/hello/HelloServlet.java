@@ -184,15 +184,16 @@ public class HelloServlet extends HttpServlet {
      * @param request
      * @param local
      * @return idade
+     * @throws Exception 
      */
-	private int qualEMinhaIdade(HttpServletRequest request, LocalDateTime local) {
+	private int qualEMinhaIdade(HttpServletRequest request, LocalDateTime local) throws Exception {
 		int ano;
 		int idade;
 		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
         String parameter = request.getParameter("data");
         
         if(parameter==null) {
-        	throw new RuntimeException("Data não informada, você deve informar a data!!!");
+        	throw new Exception("Data não informada, você deve informar a data!!!");
         }
             
         Date date = null;
