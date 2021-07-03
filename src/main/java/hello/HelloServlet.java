@@ -123,7 +123,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
             out.println("<p>" + cumprimento + "</p>");
-            out.println("<p>Meu aniversário " + idade +" anos</p>");
+            out.println("<p>Minha idade é " + idade +" anos</p>");
             out.println("</body>");
             out.println("</html>");
         }
