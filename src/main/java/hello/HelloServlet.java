@@ -99,7 +99,7 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         String msg = "";
         String cumprimento = "";
-        int idade;
+        int idade = 0;
         LocalDateTime local = LocalDateTime.now();
         int hourOfDay = local.getHour();
         
@@ -107,7 +107,11 @@ public class HelloServlet extends HttpServlet {
         
         msg = getNome(request, msg);
         
-        idade = qualEMinhaIdade(request, local);
+        try {
+			idade = qualEMinhaIdade(request, local);
+		} catch (Exception e) {
+			throw new RuntimeException("Data não informada, você deve informar a data!!!");
+		}
         
         cumprimento = cumprimentar(hourOfDay);
 
