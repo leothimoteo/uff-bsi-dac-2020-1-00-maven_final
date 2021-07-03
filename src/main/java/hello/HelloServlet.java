@@ -66,33 +66,9 @@ public class HelloServlet extends HttpServlet {
         
         String msg = "";
         
-        String lang = request.getParameter("lang");
-        if(lang==null)
-            lang = "pt";
-        switch(lang){
-            case "pt":
-                msg = "Alô, ";
-                break;
-            case "en":
-                msg = "Hello, ";
-                break;
-            case "fr":
-                msg = "Bonjour, ";
-                break;
-            case "es":
-            	msg = "Hola, ";
-            	break;
-            case "it":
-            	msg = "Ciao, ";
-                break;
-        }
+        msg = getLingua(request, msg);
         
-        String nome = request.getParameter("nome");
-
-        if(nome==null)
-            nome = "Fulano";
-        
-        msg = msg+nome+"!";
+        msg = getNome(request, msg);
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -123,12 +99,44 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         String msg = "";
         String cumprimento = "";
-        int ano;
         int idade;
         LocalDateTime local = LocalDateTime.now();
         int hourOfDay = local.getHour();
         
-        String lang = request.getParameter("lang");
+        msg = getLingua(request, msg);
+        
+        msg = getNome(request, msg);
+        
+        idade = qualEMinhaIdade(request, local);
+        
+        cumprimento = cumprimentar(hourOfDay);
+
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet HelloServlet</h1>");
+            out.println("<p>" + msg + "</p>");
+            out.println("<p>" + cumprimento + "</p>");
+            out.println("<p>Meu aniversário " + idade +" anos</p>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    /**
+     * Com base na escolha do usuário seleciona uma lingua
+     * @param request
+     * @param msg
+     * @return lingua
+     */
+	private String getLingua(HttpServletRequest request, String msg) {
+		String lang = request.getParameter("lang");
         if(lang==null)
             lang = "pt";
         switch(lang){
@@ -151,9 +159,36 @@ public class HelloServlet extends HttpServlet {
             	msg = "Ciao, ";
                 break;
         }
+		return msg;
+	}
+
+    /**
+     * Com base no input de Texto fornecido pelo usuário retorna o nome  
+     * @param request
+     * @param msg
+     * @return nome
+     */
+	private String getNome(HttpServletRequest request, String msg) {
+		String nome = request.getParameter("nome");
         
-        String nome = request.getParameter("nome");
-        SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+        
+        if(nome==null)
+            nome = "Fulano";
+        
+        msg = msg+nome+"!";
+		return msg;
+	}
+
+    /**
+     * Com base no input Data fornecido pelo usuário retorna o aniversário 
+     * @param request
+     * @param local
+     * @return idade
+     */
+	private int qualEMinhaIdade(HttpServletRequest request, LocalDateTime local) {
+		int ano;
+		int idade;
+		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
         String parameter = request.getParameter("data");
         Date date = null;
 		try {
@@ -167,38 +202,24 @@ public class HelloServlet extends HttpServlet {
 		System.out.println(ano);
 		System.out.println(local.getYear());
         System.out.println(idade);
-        
-        if(nome==null)
-            nome = "Fulano";
-        
-        msg = msg+nome+"!";
-        
-    
-        
-        if (hourOfDay >= 12 && hourOfDay < 18) {
+		return idade;
+	}
+
+    /**
+     * Retorna um cumprimento de acordo com horário o correspodente
+     * @return cumprimento
+     */
+	private String cumprimentar(int hourOfDay) {
+		String cumprimento;
+		if (hourOfDay >= 12 && hourOfDay < 18) {
         	cumprimento = "Boa tarde";
         } else if (hourOfDay >= 18 && hourOfDay < 24) {
         	cumprimento = "Boa noite";
         } else {
         	cumprimento = "Bom dia";
         }
-
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HelloServlet</h1>");
-            out.println("<p>" + msg + "</p>");
-            out.println("<p>" + cumprimento + "</p>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+		return cumprimento;
+	}
 
     /**
      * Returns a short description of the servlet.
