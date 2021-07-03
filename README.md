@@ -26,6 +26,5 @@ Acessando o seguinte endereço:
 
 <p align="justify">
  Teremos um campo novo que é o campo de Data a partir dele é possivel que o usuário possa inserir a data do seu aniversário. 
- Sendo possível dizer a idade do usuário. Além disso, algumas refatorações foram feitas a fim de fazer uso de reaproveitamento de código na classe `HelloServlet`
-</p>
-
+ Sendo possível dizer a idade do usuário. Além disso, algumas refatorações foram feitas a fim de fazer uso de reaproveitamento de código na classe 
+<i style="itatic">HelloServlet</i>.</p>
