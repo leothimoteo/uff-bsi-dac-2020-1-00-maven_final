@@ -1,16 +1,16 @@
 package hello;
 
 public class Cumprimento {
-	
-	private int horario;
-	
-	static String cumprimento;
+
+	private static int horario;
+
+	private static String cumprimento;
 
 	public Cumprimento() {
 	}
-	
+
 	public Cumprimento(int horario) {
-		this.horario = horario;
+		Cumprimento.horario = horario;
 	}
 
 	public Cumprimento(String dia, String tarde, String noite) {
@@ -21,19 +21,24 @@ public class Cumprimento {
 		return cumprimento;
 	}
 
+	public static int getHorario() {
+		return horario;
+	}
+
 	/**
-     * Retorna um cumprimento de acordo com horário o correspodente
-     * @return cumprimento
-     */
+	 * Retorna um cumprimento de acordo com horário o correspodente
+	 * 
+	 * @return cumprimento
+	 */
 	private String cumprimentar(String dia, String tarde, String noite, int horario) {
 		String cumprimento;
 		if (horario >= 12 && horario < 18) {
-        	cumprimento = tarde;
-        } else if (horario >= 18 && horario < 24) {
-        	cumprimento = noite;
-        } else {
-        	cumprimento = dia;
-        }
+			cumprimento = tarde;
+		} else if (horario >= 18 && horario < 24) {
+			cumprimento = noite;
+		} else {
+			cumprimento = dia;
+		}
 		return cumprimento;
 	}
 

@@ -100,7 +100,6 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String msg = "";
-        String resultadoCumprimento = "";
         
         int idade = 0;
         LocalDateTime local = LocalDateTime.now();
@@ -129,7 +128,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
-            out.println("<p>" + cumprimento.getCumprimento() + "</p>");
+            out.println("<p>" + Cumprimento.getCumprimento() + "</p>");
             out.println("<p>Minha idade é " + idade +" anos</p>");
             out.println("</body>");
             out.println("</html>");
