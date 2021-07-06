@@ -4,16 +4,26 @@ public class Cumprimento {
 
 	private static String cumprimento;
 
-	public Cumprimento(String dia, String tarde, String noite, int horario) {
+	private static int horario;
+
+	public Cumprimento(String dia, String tarde, String noite) {
 		this.setCumprimento(this.cumprimentar(dia, tarde, noite, horario));
 	}
 
 	public static String getCumprimento() {
 		return cumprimento;
 	}
-	
+
 	public void setCumprimento(String cumprimento) {
 		this.cumprimento = cumprimento;
+	}
+
+	public static int getHorario() {
+		return horario;
+	}
+
+	public static void setHorario(int horario) {
+		Cumprimento.horario = horario;
 	}
 
 	/**

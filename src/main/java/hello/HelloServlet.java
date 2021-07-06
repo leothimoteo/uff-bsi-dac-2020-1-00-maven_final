@@ -68,7 +68,7 @@ public class HelloServlet extends HttpServlet {
         
         String msg = "";
         
-        msg = getLingua(request, msg , 0);
+        msg = getLingua(request, msg);
         
         msg = getNome(request, msg);
 
@@ -109,6 +109,8 @@ public class HelloServlet extends HttpServlet {
         
         msg = getNome(request, msg);
         
+        Cumprimento.setHorario(horario);
+        
         try {
 			idade = qualEMinhaIdade(request, local);
 		} catch (Exception e) {
@@ -146,27 +148,27 @@ public class HelloServlet extends HttpServlet {
         switch(lang){
             case "pt":
                 msg = "Alô, ";
-                cumprimento = new Cumprimento("Bom dia", "Boa tarde", "Boa noite", horario);
+                cumprimento = new Cumprimento("Bom dia", "Boa tarde", "Boa noite");
                 break;
             case "en":
                 msg = "Hello, ";
-                cumprimento = new Cumprimento("Good morning", "Good afternoon", "Good night", horario);
+                cumprimento = new Cumprimento("Good morning", "Good afternoon", "Good night");
                 break;
             case "fr":
                 msg = "Bonjour, ";
-                cumprimento = new Cumprimento(msg, "Bon après-midi", "Bonne nuit", horario);
+                cumprimento = new Cumprimento(msg, "Bon après-midi", "Bonne nuit");
                 break;
             case "de":
                 msg = "Hallo, ";
-                cumprimento = new Cumprimento("Guten morgen", "Guten tag", "Gute nacht", horario);
+                cumprimento = new Cumprimento("Guten morgen", "Guten tag", "Gute nacht");
                 break;
             case "es":
             	msg = "Hola, ";
-            	cumprimento = new Cumprimento("Buen día", "Buenas tardes", "Buenas noches", horario);
+            	cumprimento = new Cumprimento("Buen día", "Buenas tardes", "Buenas noches");
             	break;
             case "it":
             	msg = "Ciao, ";
-            	cumprimento = new Cumprimento("Buongiorno", "Buon pomeriggio", "Buona Notte", horario);
+            	cumprimento = new Cumprimento("Buongiorno", "Buon pomeriggio", "Buona Notte");
                 break;
         }
 		return msg;
