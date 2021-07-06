@@ -9,16 +9,23 @@ package hello;
 
 import java.beans.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author viter
  */
 public class MessageBean implements Serializable {
-     
+    
+	static Cumprimento cumprimento;
+	static LocalDateTime local;
     private String msg;
         
     public MessageBean() {
+      local = LocalDateTime.now();
+      int horario = local.getHour(); 
+        
+      Cumprimento.setHorario(horario);
     }
     
     public String getMsg() {
