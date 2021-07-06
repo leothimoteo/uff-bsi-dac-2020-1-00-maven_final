@@ -68,7 +68,7 @@ public class HelloServlet extends HttpServlet {
         
         String msg = "";
         
-        msg = getLingua(request, msg);
+        msg = getLingua(request, msg , 0);
         
         msg = getNome(request, msg);
 
@@ -103,9 +103,9 @@ public class HelloServlet extends HttpServlet {
         
         int idade = 0;
         LocalDateTime local = LocalDateTime.now();
-        int hourOfDay = local.getHour();
+        int horario = local.getHour();
         
-        msg = getLingua(request, msg);
+        msg = getLingua(request, msg, horario);
         
         msg = getNome(request, msg);
         
@@ -115,8 +115,6 @@ public class HelloServlet extends HttpServlet {
 			throw new RuntimeException("Data não informada, você deve informar a data!!!");
 		}
         
-        cumprimento = new Cumprimento(hourOfDay);
-
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -141,34 +139,34 @@ public class HelloServlet extends HttpServlet {
      * @param msg
      * @return lingua
      */
-	private String getLingua(HttpServletRequest request, String msg) {
+	private String getLingua(HttpServletRequest request, String msg, int horario) {
 		String lang = request.getParameter("lang");
         if(lang==null)
             lang = "pt";
         switch(lang){
             case "pt":
                 msg = "Alô, ";
-                cumprimento = new Cumprimento("Bom dia", "Boa tarde", "Boa noite");
+                cumprimento = new Cumprimento("Bom dia", "Boa tarde", "Boa noite", horario);
                 break;
             case "en":
                 msg = "Hello, ";
-                cumprimento = new Cumprimento("Good morning", "Good afternoon", "Good night");
+                cumprimento = new Cumprimento("Good morning", "Good afternoon", "Good night", horario);
                 break;
             case "fr":
                 msg = "Bonjour, ";
-                cumprimento = new Cumprimento(msg, "Bon après-midi", "Bonne nuit");
+                cumprimento = new Cumprimento(msg, "Bon après-midi", "Bonne nuit", horario);
                 break;
             case "de":
                 msg = "Hallo, ";
-                cumprimento = new Cumprimento("Guten morgen", "Guten tag", "Gute nacht");
+                cumprimento = new Cumprimento("Guten morgen", "Guten tag", "Gute nacht", horario);
                 break;
             case "es":
             	msg = "Hola, ";
-            	cumprimento = new Cumprimento("Buen día", "Buenas tardes", "Buenas noches");
+            	cumprimento = new Cumprimento("Buen día", "Buenas tardes", "Buenas noches", horario);
             	break;
             case "it":
             	msg = "Ciao, ";
-            	cumprimento = new Cumprimento("Buongiorno", "Buon pomeriggio", "Buona Notte");
+            	cumprimento = new Cumprimento("Buongiorno", "Buon pomeriggio", "Buona Notte", horario);
                 break;
         }
 		return msg;

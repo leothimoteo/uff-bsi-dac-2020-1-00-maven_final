@@ -2,27 +2,18 @@ package hello;
 
 public class Cumprimento {
 
-	private static int horario;
-
 	private static String cumprimento;
 
-	public Cumprimento() {
-	}
-
-	public Cumprimento(int horario) {
-		Cumprimento.horario = horario;
-	}
-
-	public Cumprimento(String dia, String tarde, String noite) {
-		Cumprimento.cumprimento = this.cumprimentar(dia, tarde, noite, horario);
+	public Cumprimento(String dia, String tarde, String noite, int horario) {
+		this.setCumprimento(this.cumprimentar(dia, tarde, noite, horario));
 	}
 
 	public static String getCumprimento() {
 		return cumprimento;
 	}
-
-	public static int getHorario() {
-		return horario;
+	
+	public void setCumprimento(String cumprimento) {
+		this.cumprimento = cumprimento;
 	}
 
 	/**
