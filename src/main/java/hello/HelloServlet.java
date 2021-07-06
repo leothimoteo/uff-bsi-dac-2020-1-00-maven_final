@@ -105,7 +105,7 @@ public class HelloServlet extends HttpServlet {
         LocalDateTime local = LocalDateTime.now();
         int horario = local.getHour();
         
-        msg = getLingua(request, msg, horario);
+        msg = getLingua(request, msg);
         
         msg = getNome(request, msg);
         
@@ -141,7 +141,7 @@ public class HelloServlet extends HttpServlet {
      * @param msg
      * @return lingua
      */
-	private String getLingua(HttpServletRequest request, String msg, int horario) {
+	private String getLingua(HttpServletRequest request, String msg) {
 		String lang = request.getParameter("lang");
         if(lang==null)
             lang = "pt";
