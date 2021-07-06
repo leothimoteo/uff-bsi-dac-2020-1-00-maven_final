@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/alomundo")
 public class HelloServlet extends HttpServlet {
+	
+	public Cumprimento cumprimento;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -98,7 +100,8 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String msg = "";
-        String cumprimento = "";
+        String resultadoCumprimento = "";
+        
         int idade = 0;
         LocalDateTime local = LocalDateTime.now();
         int hourOfDay = local.getHour();
@@ -113,7 +116,7 @@ public class HelloServlet extends HttpServlet {
 			throw new RuntimeException("Data não informada, você deve informar a data!!!");
 		}
         
-        cumprimento = cumprimentar(hourOfDay);
+        cumprimento = new Cumprimento(hourOfDay);
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -126,7 +129,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
-            out.println("<p>" + cumprimento + "</p>");
+            out.println("<p>" + cumprimento.getCumprimento() + "</p>");
             out.println("<p>Minha idade é " + idade +" anos</p>");
             out.println("</body>");
             out.println("</html>");
@@ -141,26 +144,33 @@ public class HelloServlet extends HttpServlet {
      */
 	private String getLingua(HttpServletRequest request, String msg) {
 		String lang = request.getParameter("lang");
+		Cumprimento cumprimento;
         if(lang==null)
             lang = "pt";
         switch(lang){
             case "pt":
                 msg = "Alô, ";
+                cumprimento = new Cumprimento("Bom dia", "Boa tarde", "Boa noite");
                 break;
             case "en":
                 msg = "Hello, ";
+                cumprimento = new Cumprimento("Good morning", "Good afternoon", "Good night");
                 break;
             case "fr":
                 msg = "Bonjour, ";
+                cumprimento = new Cumprimento(msg, "Bon après-midi", "Bonne nuit");
                 break;
             case "de":
                 msg = "Hallo, ";
+                cumprimento = new Cumprimento("Guten morgen", "Guten tag", "Gute nacht");
                 break;
             case "es":
             	msg = "Hola, ";
+            	cumprimento = new Cumprimento("Buen día", "Buenas tardes", "Buenas noches");
             	break;
             case "it":
             	msg = "Ciao, ";
+            	cumprimento = new Cumprimento("Buongiorno", "Buon pomeriggio", "Buona Notte");
                 break;
         }
 		return msg;
@@ -174,7 +184,6 @@ public class HelloServlet extends HttpServlet {
      */
 	private String getNome(HttpServletRequest request, String msg) {
 		String nome = request.getParameter("nome");
-        
         
         if(nome==null)
             nome = "Fulano";
@@ -206,22 +215,6 @@ public class HelloServlet extends HttpServlet {
 		ano = date.getYear() + 1900;
 		idade = local.getYear() - ano;
 		return idade;
-	}
-
-    /**
-     * Retorna um cumprimento de acordo com horário o correspodente
-     * @return cumprimento
-     */
-	private String cumprimentar(int hourOfDay) {
-		String cumprimento;
-		if (hourOfDay >= 12 && hourOfDay < 18) {
-        	cumprimento = "Boa tarde";
-        } else if (hourOfDay >= 18 && hourOfDay < 24) {
-        	cumprimento = "Boa noite";
-        } else {
-        	cumprimento = "Bom dia";
-        }
-		return cumprimento;
 	}
 
     /**
