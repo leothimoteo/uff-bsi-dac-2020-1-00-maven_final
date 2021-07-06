@@ -36,22 +36,28 @@ public class MessageBean implements Serializable {
         switch (value){
             case "":
             case "pt":
-                msg = "Alô";
+                msg = "Alô, ";
+                cumprimento = new Cumprimento("Bom dia", "Boa tarde", "Boa noite");
                 break;
             case "en":
-                msg = "Hello";
-                break;
-            case "de":
-                msg = "Hallo";
+                msg = "Hello, ";
+                cumprimento = new Cumprimento("Good morning", "Good afternoon", "Good night");
                 break;
             case "fr":
-                msg = "Bonjour";
+                msg = "Bonjour, ";
+                cumprimento = new Cumprimento(msg, "Bon après-midi", "Bonne nuit");
+                break;
+            case "de":
+                msg = "Hallo, ";
+                cumprimento = new Cumprimento("Guten morgen", "Guten tag", "Gute nacht");
                 break;
             case "es":
-            	msg = "Hola";
+            	msg = "Hola, ";
+            	cumprimento = new Cumprimento("Buen día", "Buenas tardes", "Buenas noches");
             	break;
             case "it":
-            	msg = "Ciao";
+            	msg = "Ciao, ";
+            	cumprimento = new Cumprimento("Buongiorno", "Buon pomeriggio", "Buona Notte");
                 break;
         }
     }
