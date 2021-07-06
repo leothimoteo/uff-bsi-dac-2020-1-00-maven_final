@@ -1,5 +1,9 @@
 package hello;
 
+/**
+*
+* @author Maycon Prata
+*/
 public class Cumprimento {
 
 	private static String cumprimento;

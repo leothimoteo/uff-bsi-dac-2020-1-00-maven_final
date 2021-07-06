@@ -20,12 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author viter
+ * @author Maycon Prata
  */
 @WebServlet("/alomundo")
 public class HelloServlet extends HttpServlet {
 	
 	static Cumprimento cumprimento;
+	static LocalDateTime local;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -67,10 +68,13 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String msg = "";
+        int horario = getHoraAtual();
         
         msg = getLingua(request, msg);
         
         msg = getNome(request, msg);
+        
+        Cumprimento.setHorario(horario);
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -83,6 +87,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
+            out.println("<p>" + Cumprimento.getCumprimento() + "</p>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -102,8 +107,7 @@ public class HelloServlet extends HttpServlet {
         String msg = "";
         
         int idade = 0;
-        LocalDateTime local = LocalDateTime.now();
-        int horario = local.getHour();
+        int horario = getHoraAtual();
         
         msg = getLingua(request, msg);
         
@@ -134,6 +138,15 @@ public class HelloServlet extends HttpServlet {
             out.println("</html>");
         }
     }
+
+    /**
+     * Retorna a hora atual
+     * @return hora atual
+     */
+	public int getHoraAtual() {
+		local = LocalDateTime.now();
+		return local.getHour();
+	}
 
     /**
      * Com base na escolha do usuário seleciona uma lingua
