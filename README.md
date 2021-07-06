@@ -1,8 +1,19 @@
 <img width="150" height="150" align="right" src="https://upload.wikimedia.org/wikipedia/pt/4/47/UFF_bras%C3%A3o.png">
 
-# Disciplina Desenvolvimento de Aplicações
+# Disciplina Desenvolvimento de Aplicações 2021/1
 
-## Tarefa Geral I
+## Tarefa 01: Hello World no Heroku
+
+[Link da Aplicação](https://still-journey-31467.herokuapp.com)
+
+## TÉCNOLOGIAS UTILIZADAS
+
+- JAVA 8
+- SERVLET
+- JSP
+- MAVEN 3.6.1
+- Apache Tomcat/9.0.27 in (HEROKU)
+- IDE ECLIPSE
 
 ### Descrição da Tarefa
 
@@ -22,10 +33,9 @@
 ### Funcionalidade Desenvolvida
 
 Acessando o seguinte endereço:
-- [Link Heroku](https://still-journey-31467.herokuapp.com/helloform.html)
+- [Link da Funcionalidade](https://still-journey-31467.herokuapp.com/helloform.html)
 
 <p align="justify">
  Teremos um campo novo que é o campo de Data a partir dele é possivel que o usuário possa inserir a data do seu aniversário. 
- Sendo possível dizer a idade do usuário.
-</p>
-
+ Sendo possível dizer a idade do usuário. Além disso, algumas refatorações foram feitas a fim de fazer uso de reaproveitamento de código na classe 
+<i style="itatic">HelloServlet</i>.</p>
