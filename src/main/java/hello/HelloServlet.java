@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/alomundo")
 public class HelloServlet extends HttpServlet {
 	
-	public Cumprimento cumprimento;
+	static Cumprimento cumprimento;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -144,7 +144,6 @@ public class HelloServlet extends HttpServlet {
      */
 	private String getLingua(HttpServletRequest request, String msg) {
 		String lang = request.getParameter("lang");
-		Cumprimento cumprimento;
         if(lang==null)
             lang = "pt";
         switch(lang){
