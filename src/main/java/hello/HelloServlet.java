@@ -108,6 +108,7 @@ public class HelloServlet extends HttpServlet {
         
         int idade = 0;
         int horario = getHoraAtual();
+        String estoque = "";
         
         msg = getLingua(request, msg);
         
@@ -121,6 +122,17 @@ public class HelloServlet extends HttpServlet {
 			throw new RuntimeException("Data não informada, você deve informar a data!!!");
 		}
         
+        idade = qualEMinhaIdade(request, local);
+        
+        if (idade >= 50) {
+            estoque = "cringe";
+        } else if (idade < 50 && idade > 25) {
+            estoque = "milenium";;
+        } else {
+            estoque = "geracaoz";;
+        }
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -133,7 +145,7 @@ public class HelloServlet extends HttpServlet {
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
             out.println("<p>" + Cumprimento.getCumprimento() + "</p>");
-            out.println("<p>Minha idade é " + idade +" anos</p>");
+            out.println("<p>Minha idade é " + estoque +" anos</p>");
             out.println("</body>");
             out.println("</html>");
         }
